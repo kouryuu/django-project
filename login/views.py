@@ -13,9 +13,10 @@ def log(request):#,passw_hash):
     username = request_json['username']
     passw = request_json['passw']
     try:
-        user = User.objects.get(username__exact=str(username))
+        user = User.objects.get(username__exact=str(username),passw__exact=str(passw))
     except:
         return JsonResponse({'success':False})
+    request.session['username'] = username
     return JsonResponse({'success':True})
     # return HttpResponse('cuack')
 def create(request):

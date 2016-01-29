@@ -5,12 +5,15 @@ loginApp.controller('LoginCtrl', ['$scope','$http','$log', function($scope,$http
   $scope.success_msg = ""
 
   $scope.logme = (function (){
-
+    if($scope.username == '' || $scope.username === undefined || $scope.raw_passw == '' || $scope.raw_passw === undefined){
+      $scope.error = "Username or password empty."
+    }else{
    $http.post('/login/log/', {'username':$scope.username,'passw':$scope.raw_passw}).then(function(req) {
-
+     $scope.error = ""
      $scope.success = req.data['success']
      if($scope.success){
        $scope.success_msg = "Successfully logged in."
+       document.location = '/main/'
      }else{
        $scope.error = "Your login is incorrect."
      }
@@ -19,11 +22,14 @@ loginApp.controller('LoginCtrl', ['$scope','$http','$log', function($scope,$http
         //$log.log(err)
 
       });
-
+    }
     });
 
     $scope.create = (function (){
-
+      $log.log($scope.username)
+      if($scope.username == '' || $scope.username === undefined || $scope.raw_passw == '' || $scope.raw_passw === undefined){
+        $scope.error = "Username or password empty."
+      }else{
      $http.post('/login/create/', {'username':$scope.username,'passw':$scope.raw_passw}).then(function(req) {
 
        $scope.success = req.data['success']
@@ -37,7 +43,7 @@ loginApp.controller('LoginCtrl', ['$scope','$http','$log', function($scope,$http
           //$log.log(err)
 
         });
-
+      }
       });
 
 }]);
