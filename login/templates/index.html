@@ -1,0 +1,107 @@
+{% load staticfiles %}
+<!doctype html>
+<html ng-app="loginApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+        <!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-1.12.0.min.js" ></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="{% static 'js/login.js' %}"></script>
+    </head>
+    <body ng-controller="LoginCtrl">
+
+
+      <div class="container">
+        <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Datata</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#">{{ nombre1 }}</a></li>
+        <li><a href="#">{{ nombre2 }}</a></li>
+
+
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+      	<div class="row">
+      		<form class="form-signin mg-btm">
+          	<h3 class="heading-desc">
+      		Login</h3>
+
+      		<div class="main">
+{% verbatim %}
+  <div class="alert alert-success" role="alert" ng-show="success">
+    {{ success_msg }}
+    </div>
+    <div class="alert alert-danger" role="alert" ng-show="error != ''">
+      {{ error }}
+      </div>
+    {% endverbatim %}
+                  <label>Username</label>
+                  <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  	<input type="text" ng-model="username" class="form-control" placeholder="" autofocus>
+                  </div>
+                  <label>Password   </label>
+                  <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                      <input type="password" ng-model="raw_passw" class="form-control" />
+                  </div>
+
+              	<div class="row">
+                      <div class="col-xs-6 col-md-6">
+                           
+                      </div>
+                      <div class="col-xs-6 col-md-6 pull-right">
+                          <button type="submit" class="btn btn-large btn-success pull-right" ng-click="logme()" >Login</button>
+                      </div>
+                  </div>
+      		</div>
+
+      		<span class="clearfix"></span>
+
+      		<div class="login-footer">
+          		<div class="row">
+                      <div class="col-xs-6 col-md-6">
+                          <div class="left-section">
+
+
+                              <a class="btn btn-primary" ng-click="create()" href="#" >Create an account</a>
+
+          				</div>
+                      </div>
+                      <div class="col-xs-6 col-md-6 pull-right">
+                      </div>
+                  </div>
+      		</div>
+            </form>
+      	</div>
+
+      </div>
+
+
+    </body>
