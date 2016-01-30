@@ -19,4 +19,19 @@ $scope.display_item_selection = (function () {
   $scope.show_derivative = false
   $scope.show_edit_names = false
 });
+$scope.getDerivative = (function(){
+  if($scope.function == ''){
+
+  }else{
+    $http.post('/derivative/derive/', {'function':$scope.function}).then(function(req) {
+
+      $scope.derivative = req.data['derivative']
+
+       },
+       function(err){
+         $log.log(err)
+
+       });
+     }
+  });
 }]);

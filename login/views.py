@@ -9,7 +9,7 @@ def index(request):
     return render(request, 'index.html')
 
 def log(request):#,passw_hash):
-    request_json = json.loads(request.body);
+    request_json = json.loads(request.body)
     username = request_json['username']
     passw = request_json['passw']
     try:

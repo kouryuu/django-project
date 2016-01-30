@@ -52,3 +52,5 @@ The solution was implemented using given that the derivative of **x^n** is **nx^
 So the algorithm parses each term separately and given the derivative of each term it calculates the derivative of the whole polynomial.
 
 ### Pending
+
+This version does not group common terms nor does it remove zeroed terms.
