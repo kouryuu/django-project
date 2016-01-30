@@ -61,7 +61,7 @@
     <h3 class="panel-title">Derivative module</h3>
   </div>
   <div class="panel-body">
-
+    <br />
     <p>We suppose a polynomial expressed in the form of multiplications and additions, for example "2*x*x+2"
     would be 2x^2+2; the program calculates its derivative and displays a graph plotting the function for both the function and its derivative.</p>
 
@@ -91,17 +91,20 @@
   <div class="panel-heading">
     <h3 class="panel-title">Item Selection module</h3>
   </div>
+  <br />
   <div class="panel-body">
     <p>The problem is stated as follows, we have <strong>n</strong> people each rating <strong>n</strong> articles based on desireability.
     We must assign each item to one and only one person each, trying to maximize the global desireability.
-
+    <br /><br />
 <div class="input-group">
   <span class="input-group-addon" id="sizing-addon2">Items</span>
   <input type="text" class="form-control" >
 </div>
+<br />
 <center>
 <a href="#" class="btn btn-success ">Generate Table</a>
 </center>
+
   </div>
 </div>
 
@@ -111,23 +114,34 @@
   <div class="panel-heading">
     <h3 class="panel-title">Edit Names</h3>
   </div>
+  <br />
   <div class="panel-body">
+    {% verbatim %}
+      <div class="alert alert-success" role="alert" ng-show="success_names">
+        Changed Names successfully.
+        </div>
+    {% endverbatim %}
+    <br />
     <p>This module changes the names of the three menu items.
+      <br />
+      <br />
+      <br />
 <div class="input-group">
   <span class="input-group-addon" >1</span>
-  <input type="text" class="form-control" placeholder="{{ name1 }}">
-</div>
+  <input type="text" class="form-control" ng-init="name1 ='{{ name1 }}'" placeholder="{{ name1 }}" ng-model="name1">
+</div><br />
 <div class="input-group">
   <span class="input-group-addon">2</span>
-  <input type="text" class="form-control" placeholder="{{ name2 }}">
-</div>
+  <input type="text" class="form-control" ng-init="name2 ='{{ name2 }}'" placeholder="{{ name2 }}" ng-model="name2">
+</div><br />
 <div class="input-group">
   <span class="input-group-addon" id="sizing-addon2">3</span>
-  <input type="text" class="form-control" placeholder="{{ name3 }}" >
+  <input type="text" class="form-control" ng-init="name3 ='{{ name3 }}'" placeholder="{{ name3 }}" ng-model="name3">
 </div>
-<center>
-<a href="#" class="btn btn-success ">Save</a>
+<center><br />
+<a href="#" class="btn btn-success " ng-click="getNames()">Save</a>
 </center>
+
   </div>
 </div>
 

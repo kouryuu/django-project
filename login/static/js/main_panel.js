@@ -3,7 +3,7 @@ mainPanelApp.controller('mainPanelCtrl', ['$scope','$http','$log', function($sco
 $scope.show_derivative = false
 $scope.show_item_selection = false
 $scope.show_edit_names = false
-
+$scope.success_names = false
 $scope.display_edit_names = (function () {
   $scope.show_item_selection = false
   $scope.show_derivative = false
@@ -34,4 +34,15 @@ $scope.getDerivative = (function(){
        });
      }
   });
+$scope.getNames = (function (){
+  $http.post('/main/editName/', {'name1':$scope.name1,'name2':$scope.name2,'name3':$scope.name3}).then(function(req) {
+
+    $scope.success_names = req.data['success']
+
+     },
+     function(err){
+       $log.log(err)
+
+     });
+});
 }]);

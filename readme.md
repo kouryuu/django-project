@@ -11,6 +11,14 @@ There are 3 main components:
 
 There is a section to document each feature and subsections to further explain decisions made in the project.
 
+## How to deploy
+
+Start the python Django server
+```
+ python manage.py runserver <port>
+```
+Access http://localhost:8085/login/ to start.
+
 
 ## Items Selection
 
@@ -54,3 +62,9 @@ So the algorithm parses each term separately and given the derivative of each te
 ### Pending
 
 This version does not group common terms nor does it remove zeroed terms.
+Should not use eval() function to calculate the point value.
+
+
+##  UI Names
+
+This is a simple interface to change the names of the top nav menu.
