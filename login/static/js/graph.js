@@ -1,73 +1,77 @@
-InitChart();
+function genChart(dataPoints1,dataPoints2){
+  var ctx = document.getElementById("visualisation").getContext("2d");
+  var data = {
+    labels: ["1", "10", "20", "30", "40", "50", "60"],
+    datasets: [
+        {
+            label: "Function",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: dataPoints1
+        },
+        {
+            label: "Derivative",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: dataPoints2
+        }
+    ]
+};
+  var options = {
 
-function InitChart() {
+    ///Boolean - Whether grid lines are shown across the chart
+    scaleShowGridLines : true,
 
-  var lineData = [{
-    'x': 1,
-    'y': 5
-  }, {
-    'x': 20,
-    'y': 20
-  }, {
-    'x': 40,
-    'y': 10
-  }, {
-    'x': 60,
-    'y': 40
-  }, {
-    'x': 80,
-    'y': 5
-  }, {
-    'x': 100,
-    'y': 60
-  }];
+    //String - Colour of the grid lines
+    scaleGridLineColor : "rgba(0,0,0,.05)",
 
-  var vis = d3.select("#visualisation"),
-    WIDTH = 1000,
-    HEIGHT = 500,
-    MARGINS = {
-      top: 20,
-      right: 20,
-      bottom: 20,
-      left: 50
-    },
-    xRange = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(lineData, function (d) {
-        return d.x;
-      }),
-      d3.max(lineData, function (d) {
-        return d.x;
-      })
-    ]),
+    //Number - Width of the grid lines
+    scaleGridLineWidth : 1,
 
-    yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([d3.min(lineData, function (d) {
-        return d.y;
-      }),
-      d3.max(lineData, function (d) {
-        return d.y;
-      })
-    ]),
+    //Boolean - Whether to show horizontal lines (except X axis)
+    scaleShowHorizontalLines: true,
 
-    xAxis = d3.svg.axis()
-      .scale(xRange)
-      .tickSize(5)
-      .tickSubdivide(true),
+    //Boolean - Whether to show vertical lines (except Y axis)
+    scaleShowVerticalLines: true,
 
-    yAxis = d3.svg.axis()
-      .scale(yRange)
-      .tickSize(5)
-      .orient("left")
-      .tickSubdivide(true);
+    //Boolean - Whether the line is curved between points
+    bezierCurve : true,
 
+    //Number - Tension of the bezier curve between points
+    bezierCurveTension : 0.4,
 
-  vis.append("svg:g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
-    .call(xAxis);
+    //Boolean - Whether to show a dot for each point
+    pointDot : true,
 
-  vis.append("svg:g")
-    .attr("class", "y axis")
-    .attr("transform", "translate(" + (MARGINS.left) + ",0)")
-    .call(yAxis);
+    //Number - Radius of each point dot in pixels
+    pointDotRadius : 4,
 
+    //Number - Pixel width of point dot stroke
+    pointDotStrokeWidth : 1,
 
+    //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+    pointHitDetectionRadius : 20,
+
+    //Boolean - Whether to show a stroke for datasets
+    datasetStroke : true,
+
+    //Number - Pixel width of dataset stroke
+    datasetStrokeWidth : 2,
+
+    //Boolean - Whether to fill the dataset with a colour
+    datasetFill : true,
+
+    //String - A legend template
+    legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+};
+var myLineChart = new Chart(ctx).Line(data, options);
 }

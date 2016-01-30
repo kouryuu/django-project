@@ -79,3 +79,11 @@ def calculatePoint(func, point):
     func_replaced = func.replace('x',str(point))
     print func_replaced
     return eval(func_replaced) #quite dangerous but simple solution use with validations
+def genPoints(func):
+    """ Generates points of values 1 ,10 ,20,30,40,50,60
+    """
+    points = [1 ,10 ,20,30,40,50,60]
+    func_points = []
+    for point in points:
+        func_points.append(calculatePoint(func,point))
+    return func_points

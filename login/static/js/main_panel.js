@@ -26,7 +26,7 @@ $scope.getDerivative = (function(){
     $http.post('/derivative/derive/', {'function':$scope.function}).then(function(req) {
 
       $scope.derivative = req.data['derivative']
-
+      genChart(req.data['functionPoints'],req.data['derivativePoints'])
        },
        function(err){
          $log.log(err)

@@ -16,11 +16,11 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.14/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
 
-
-<script src="{% static 'js/main_panel.js' %}"></script>
 <script src="{% static 'js/graph.js' %}"></script>
+<script src="{% static 'js/main_panel.js' %}"></script>
+
     </head>
     <body ng-controller="mainPanelCtrl">
 
@@ -80,7 +80,7 @@
     The derivative of the function <strong>{{ function }}</strong> = {{ derivative }}
     </div>
 {% endverbatim %}
-<svg id="visualisation" width="1000" height="500" ng-show="derivative != undefined"></svg>
+<canvas id="visualisation" width="400" height="400"></canvas>
 </center>
   </div>
 </div>

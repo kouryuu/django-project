@@ -7,4 +7,4 @@ from django.http import JsonResponse
 def getDerivative(request):
     request_json = json.loads(request.body)
     function = request_json['function']
-    return JsonResponse({'derivative':derivative(function)})
+    return JsonResponse({'derivative':derivative(function),'functionPoints':genPoints(function),'derivativePoints':genPoints(derivative(function))})
