@@ -18,6 +18,7 @@ Start the python Django server
  python manage.py runserver <port>
 ```
 Access http://localhost:8085/login/ to start.
+The test user is **samuel** with the password *jackson*
 
 
 ## Items Selection
